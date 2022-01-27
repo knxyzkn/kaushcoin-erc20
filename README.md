@@ -1,10 +1,13 @@
-# Kaushcoin, an ERC-20 Token
+# kaushcoin, an ERC-20 Token
 
 ## Introduction
-Token Name: Kaushcoin
-Token Symbol: KSH
-Token Standard: ERC-20
-Blockchain: Ethereum Rinkeby TestNet
+Token Name: **Kaushcoin**
+
+Token Symbol: **KSH**
+
+Token Standard: **ERC-20**
+
+Blockchain: **Ethereum Rinkeby TestNet**
 
 ## Kaushcoin Faucet
 
