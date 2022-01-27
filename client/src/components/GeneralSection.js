@@ -30,7 +30,7 @@ class GeneralSection extends Component {
         <div>
           <StyledTextFieldAccount
            id="read-only-connected-account"
-           label="Connected Account (Read Only)"
+           label="Your Connected Account Address (Read Only)"
            defaultValue={this.props.accounts[0]}
            helperText="You can disconnect this account in Metamask. After disconnecting, please refresh this page."
            InputProps={{

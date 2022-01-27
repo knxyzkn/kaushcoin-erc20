@@ -10,7 +10,16 @@ import NotWeb3 from "./components/NotWeb3.js";
 import "./App.css";
 
 class App extends Component {
-  state = { storageValue: 0, web3: null, accounts: null, contract: null, owner: null };
+  state = {
+    storageValue: 0,
+    web3: null,
+    accounts: null,
+    contract: null,
+    owner: null,
+    balance: null,
+    name: null,
+    symbol: null
+   };
 
   componentDidMount = async () => {
     try {
@@ -41,6 +50,18 @@ class App extends Component {
       .catch(error => { alert(`Owner error. Please try again, perhaps after resetting your account. ${'\n'} Error: ${error.message}` )});
       console.log("OWNER", owner);
 
+      // Get the name of the Token
+      const name = await instance.methods.name().call();
+      console.log("NAME", name);
+
+      // Get the symbol of the Token
+      const symbol = await instance.methods.symbol().call();
+      console.log("SYMBOL", symbol);
+
+      // Get the total supply of the Token
+      const totalSupply = await instance.methods.totalSupply().call();
+      console.log("TOTAL SUPPLY", totalSupply/Math.pow(10,18));
+
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
       this.setState({
@@ -48,7 +69,10 @@ class App extends Component {
         accounts,
         contract: instance,
         contractAddress: deployedNetwork.address,
-        owner: owner
+        owner: owner,
+        name: name,
+        symbol: symbol,
+        totalSupply: totalSupply
       }, this.runExample);
       console.log(this.state);
     } catch (error) {
@@ -77,7 +101,19 @@ class App extends Component {
     try{
       console.log("MINT CLICKED", event, this.state.owner);
       await this.state.contract.methods
-      .mint(this.state.accounts[0], 1000000000000)
+      .mint(this.state.accounts[0], 1000000000000000)
+      .send({ from: this.state.accounts[0] });
+      // .catch((error) => { alert(`Mint was NOT sent. Please try again, perhaps after resetting your account. ${'\n'} Error: ${error.message}` )});
+    } catch(error) {
+      console.log("ERROR MINT", error)
+    }
+  }
+
+  handleMintApproveButtonClick = async (event) => {
+    try{
+      console.log("MINT VIA APPROVE CLICKED", event, this.state.owner);
+      await this.state.contract.methods
+      .approve(this.state.accounts[0], 1000000000000000)
       .send({ from: this.state.accounts[0] });
       // .catch((error) => { alert(`Mint was NOT sent. Please try again, perhaps after resetting your account. ${'\n'} Error: ${error.message}` )});
     } catch(error) {
@@ -92,7 +128,22 @@ class App extends Component {
       .balanceOf(this.state.accounts[0])
       .call()
       .catch((error) => { alert(`Balance was NOT received. Please try again, perhaps after resetting your account. ${'\n'} Error: ${error.message}` )});
-      console.log(balance);
+      console.log("BALANCE", balance);
+      this.setState({ balance });
+    } catch(error) {
+      console.log("ERROR BALANCE", error)
+    }
+  }
+
+  handleTotalSupplyButtonClick = async (event) => {
+    try{
+      console.log("GET TOTAL SUPPLY CLICKED", event);
+      const totalSupply = await this.state.contract.methods
+      .totalSupply()
+      .call()
+      .catch((error) => { alert(`Balance was NOT received. Please try again, perhaps after resetting your account. ${'\n'} Error: ${error.message}` )});
+      console.log("TOTAL SUPPLY", totalSupply);
+      this.setState({ totalSupply });
     } catch(error) {
       console.log("ERROR BALANCE", error)
     }
@@ -104,7 +155,7 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <h1>KaushCoin (KSH)</h1>
+        <h1>{this.state.name} {this.state.symbol}</h1>
         <GeneralSection
           contractAddress={this.state.contractAddress}
           accounts={this.state.accounts}
@@ -118,12 +169,52 @@ class App extends Component {
 
         <div>
           <Button size="small" variant="contained" disableElevation
+              onClick={this.handleMintApproveButtonClick.bind(this)}
+              style={{marginLeft: '3vw', marginRight: '3vw', marginBottom: '20px'}}
+          >MINT via APPROVE</Button>
+        </div>
+
+        <div>
+          <Button size="small" variant="contained" disableElevation
               onClick={this.handleBalanceButtonClick.bind(this)}
               style={{marginLeft: '3vw', marginRight: '3vw', marginBottom: '20px'}}
           >BALANCE</Button>
+          <Typography align="left" style={{backgroundColor: '#ECECEC', marginLeft: '3vw', marginRight: '3vw', marginBottom: '20px'}}>
+            Balance: {` `}
+          {
+            this.state.balance ?
+              (this.state.balance/Math.pow(10,18))
+              :
+              "Not Available"
+          }
+          {
+            this.state.balance ?
+              this.state.symbol : null
+          }
+          </Typography>
         </div>
 
-      </div>
+          <div>
+            <Button size="small" variant="contained" disableElevation
+                onClick={this.handleTotalSupplyButtonClick.bind(this)}
+                style={{marginLeft: '3vw', marginRight: '3vw', marginBottom: '20px'}}
+            >TOTAL SUPPLY</Button>
+            <Typography align="left" style={{backgroundColor: '#ECECEC', marginLeft: '3vw', marginRight: '3vw', marginBottom: '20px'}}>
+              Total Supply: {` `}
+            {
+              this.state.totalSupply ?
+                (this.state.totalSupply/Math.pow(10,18))
+                :
+                "Not Available"
+            }
+            {
+              this.state.totalSupply ?
+                this.state.symbol : null
+            }
+            </Typography>
+          </div>
+        </div>
+
     );
   }
 }
