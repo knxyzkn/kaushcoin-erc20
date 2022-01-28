@@ -1,4 +1,4 @@
-# kaushcoin, an ERC-20 Token
+# Kaushcoin, an ERC-20 Token
 
 ## Introduction
 Token Name: **Kaushcoin**
@@ -13,7 +13,7 @@ Blockchain: **Ethereum Rinkeby TestNet**
 
 You can do the following in the faucet dapp.
 1. Mint 10 KSH at a time to your Ethereum address.
-2. Check the current balance of kaushikcoins in your Ethereum address.
+2. Check the current balance of kaushcoins in your Ethereum address.
 3. Check the current total supply of all kaushcoins on the Rinkeby TestNet.
 4. Transfer your kaushcoins from you address to another Ethereum address.
 
