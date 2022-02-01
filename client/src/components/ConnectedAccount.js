@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Typography, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import InputAdornment from '@mui/material/InputAdornment';
 
 class ConnectedAccount extends Component {
   render() {

@@ -11,7 +11,7 @@ class GeneralSection extends Component {
         borderWidth: 2,
       }
     });
-    console.log("PROPS TOTAL SUPPLY", this.props.totalSupply);
+    // console.log("PROPS TOTAL SUPPLY", this.props.totalSupply);
 
     return (
       <div>

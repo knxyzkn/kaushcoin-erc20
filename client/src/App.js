@@ -32,47 +32,47 @@ class App extends Component {
 
       // Use web3 to get the user's accounts.
       const accounts = await web3.eth.getAccounts();
-      console.log("ACCOUNTS", accounts);
+      // console.log("ACCOUNTS", accounts);
 
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
-      console.log("NETWORK ID", networkId);
+      // console.log("NETWORK ID", networkId);
 
       const deployedNetwork = KaushCoin.networks[networkId];
-      console.log("DEPLOYED NETWORK", deployedNetwork);
+      // console.log("DEPLOYED NETWORK", deployedNetwork);
 
       const instance = new web3.eth.Contract(
         KaushCoin.abi,
         deployedNetwork && deployedNetwork.address,
       );
-      console.log("INSTANCE", instance);
+      // console.log("INSTANCE", instance);
 
       // Get the owner of the contract.
       const owner = await instance.methods
       .owner()
       .call()
       .catch(error => { alert(`Owner error. Please try again, perhaps after resetting your account. ${'\n'} Error: ${error.message}` )});
-      console.log("OWNER", owner);
+      // console.log("OWNER", owner);
 
       // Get the name of the Token
       const name = await instance.methods.name().call();
-      console.log("NAME", name);
+      // console.log("NAME", name);
 
       // Get the symbol of the Token
       const symbol = await instance.methods.symbol().call();
-      console.log("SYMBOL", symbol);
+      // console.log("SYMBOL", symbol);
 
       // Get the total supply of the Token
       const totalSupply = await instance.methods.totalSupply().call();
-      console.log("TOTAL SUPPLY", totalSupply/Math.pow(10,18));
+      // console.log("TOTAL SUPPLY", totalSupply/Math.pow(10,18));
 
       // Get the decimals count of the Token
       const decimals = await instance.methods.decimals().call();
-      console.log("DECIMALS", decimals);
+      // console.log("DECIMALS", decimals);
 
       // Get the balance of Token in connected account
       const balance = await instance.methods.balanceOf(accounts[0]).call();
-      console.log("BALANCE", balance);
+      // console.log("BALANCE", balance);
 
 
       // Set web3, accounts, and contract to the state, and then proceed with an
@@ -89,7 +89,7 @@ class App extends Component {
         decimals: decimals,
         balance: balance
       }, this.runExample);
-      console.log(this.state);
+      // console.log(this.state);
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
@@ -116,8 +116,8 @@ class App extends Component {
     try{
       // const mintValue= 10*Math.pow(10, this.state.decimals);
       const mintValue = 10;
-      console.log("MINT VALUE", mintValue);
-      console.log("MINT CLICKED", event, this.state.owner);
+      // console.log("MINT VALUE", mintValue);
+      // console.log("MINT CLICKED", event, this.state.owner);
       await this.state.contract.methods
       .mint(this.state.accounts[0], mintValue)
       .send({ from: this.state.accounts[0] })
@@ -127,13 +127,13 @@ class App extends Component {
       .balanceOf(this.state.accounts[0])
       .call()
       .catch((error) => { alert(`Balance was NOT received. Please try again, perhaps after resetting your account. ${'\n'} Error: ${error.message}` )});
-      console.log("BALANCE", balance);
+      // console.log("BALANCE", balance);
 
       const totalSupply = await this.state.contract.methods
       .totalSupply()
       .call()
       .catch((error) => { alert(`Balance was NOT received. Please try again, perhaps after resetting your account. ${'\n'} Error: ${error.message}` )});
-      console.log("TOTAL SUPPLY", totalSupply);
+      // console.log("TOTAL SUPPLY", totalSupply);
 
       this.setState({
         balance: balance,
