@@ -10,7 +10,11 @@ contract KaushCoin is ERC20, Ownable {
     }
 
     function mint(address to, uint256 amount) public {
-        _mint(to, amount);
+        _mint(to, amount * 10 ** decimals());
+    }
+
+    function burn(address account, uint256 amount) public {
+      _burn(account, amount * 10 ** decimals());
     }
 }
 

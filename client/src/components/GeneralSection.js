@@ -10,15 +10,16 @@ class GeneralSection extends Component {
         borderWidth: 2,
       }
     });
+    console.log("PROPS TOTAL SUPPLY", this.props.totalSupply);
 
     return (
       <div>
-        <Typography align="left" style={{marginLeft: '3vw', marginRight: '3vw', marginBottom: '20px'}}>
+        <Typography align="center" style={{marginLeft: '3vw', marginRight: '3vw', marginBottom: '20px'}}>
           KaushCoin (KSH) is an ERC-20 Token on the Ethereum Rinkeby Test Network.
         </Typography>
         <div>
           <TextField
-           id="read-only-connected-account"
+           id="read-only-smart-contract-address"
            label="Smart Contract Address (Read Only)"
            defaultValue={this.props.contractAddress}
            InputProps={{
@@ -27,18 +28,52 @@ class GeneralSection extends Component {
            style={{marginLeft: '3vw', marginRight: '3vw', marginBottom: '20px', width: '90vw'}}
          />
         </div>
+
         <div>
-          <StyledTextFieldAccount
-           id="read-only-connected-account"
-           label="Your Connected Account Address (Read Only)"
-           defaultValue={this.props.accounts[0]}
-           helperText="You can disconnect this account in Metamask. After disconnecting, please refresh this page."
+          <TextField
+           id="read-only-token-name"
+           label="Token Name (Read Only)"
+           defaultValue={this.props.name}
            InputProps={{
              readOnly: true,
            }}
-           style={{ marginLeft: '3vw', marginRight: '3vw', marginBottom: '20px', width: '90vw'}}
+           style={{marginLeft: '3vw', marginRight: '3vw', marginBottom: '20px', width: '33vw'}}
          />
-        </div>
+
+         <TextField
+          id="read-only-token-symbol"
+          label="Token Symbol (Read Only)"
+          defaultValue={this.props.symbol}
+          InputProps={{
+            readOnly: true,
+          }}
+          style={{marginLeft: '3vw', marginRight: '3vw', marginBottom: '20px', width: '33vw'}}
+         />
+
+        <TextField
+         id="read-only-token-total-supply"
+         label="Token Total Supply (Read Only)"
+         defaultValue={this.props.totalSupply}
+         // defaultValue={(this.props.totalSupply/Math.pow(10,18)).toLocaleString()}
+         helperText="This is the current total supply of KSH in existence."
+         InputProps={{
+           readOnly: true,
+         }}
+         style={{marginLeft: '3vw', marginRight: '3vw', marginBottom: '20px', width: '33vw'}}
+        />
+
+        <TextField
+         id="read-only-token-decimals"
+         label="Token Decimals (Read Only)"
+         defaultValue={this.props.decimals}
+         helperText={`KSH can have upto 18 decimal places.`}
+         InputProps={{
+           readOnly: true,
+         }}
+         style={{marginLeft: '3vw', marginRight: '3vw', marginBottom: '20px', width: '33vw'}}
+        />
+       </div>
+
       </div>
     )
   }
