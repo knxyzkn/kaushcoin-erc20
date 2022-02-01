@@ -1,7 +1,7 @@
-# Kaushcoin, an ERC-20 Token
+# KaushCoin, an ERC-20 Token
 
 ## Introduction
-Token Name: **Kaushcoin**
+Token Name: **KaushCoin**
 
 Token Symbol: **KSH**
 
@@ -9,7 +9,7 @@ Token Standard: **ERC-20**
 
 Blockchain: **Ethereum Rinkeby TestNet**
 
-## Kaushcoin Faucet
+## KaushCoin Faucet
 
 You can do the following in the faucet dapp.
 1. Mint 10 KSH at a time to your Ethereum address.
@@ -18,20 +18,20 @@ You can do the following in the faucet dapp.
 
 Note: Effort has been made to communicate the above through the Dapp UI with descriptive text where appropriate.
 
-## Link to Kaushcoin Faucet
+## KaushCoin Links
 
-Link: https://kaushcoin.vercel.app/
+Faucet: https://kaushcoin.vercel.app/
+
+Smart Contract Address: `0x5d980be513a94D790beF385f4fE250d219ed5b4E`
+
+Etherscan: https://rinkeby.etherscan.io/token/0x5d980be513a94D790beF385f4fE250d219ed5b4E
 
 ## User Journey
 
 1. Visit the faucet using the link above.
-2. Connect a valid Ethereum address using a web3 wallet, such as MetaMask.
+2. Connect a valid Ethereum address using a Web3 wallet, such as MetaMask.
 3. Click 'Mint 10 KSH' and approve the transaction in your wallet.
 4. Your address will receive 10 KSH.
-
-Smart Contract Address: `0x5d980be513a94D790beF385f4fE250d219ed5b4E`
-
-Etherscan Link: https://rinkeby.etherscan.io/token/0x5d980be513a94D790beF385f4fE250d219ed5b4E
 
 ## Dapp Architecture
 
@@ -41,6 +41,7 @@ Etherscan Link: https://rinkeby.etherscan.io/token/0x5d980be513a94D790beF385f4fE
 - Development Framework: **Truffle**
 - Ethereum Gateway Service: **Infura**
 - Dapp Framework: **React Box in Truffle**
+- Ethereum JavaScript API: **Web3.js**
 - Frontend: **React**
 - UI Components: **Material-UI**
 - Libraries: **OpenZeppelin ERC-20 Contract**
