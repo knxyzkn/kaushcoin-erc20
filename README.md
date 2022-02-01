@@ -20,7 +20,7 @@ Note: Effort has been made to communicate the above through the Dapp UI with des
 
 ## Link to Kaushcoin Faucet
 
-Link: https://crypto-donater.vercel.app/
+Link: https://kaushcoin.vercel.app/
 
 ## User Journey
 
