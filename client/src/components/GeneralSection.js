@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Typography, TextField } from '@mui/material';
+import { Typography, TextField, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 class GeneralSection extends Component {
   render() {
@@ -53,8 +54,7 @@ class GeneralSection extends Component {
         <TextField
          id="read-only-token-total-supply"
          label="Token Total Supply (Read Only)"
-         defaultValue={this.props.totalSupply}
-         // defaultValue={(this.props.totalSupply/Math.pow(10,18)).toLocaleString()}
+         defaultValue={(this.props.totalSupply/Math.pow(10,18)).toLocaleString()}
          helperText="This is the current total supply of KSH in existence."
          InputProps={{
            readOnly: true,
@@ -73,6 +73,15 @@ class GeneralSection extends Component {
          style={{marginLeft: '3vw', marginRight: '3vw', marginBottom: '20px', width: '33vw'}}
         />
        </div>
+
+       <Button size="small" variant="contained" disableElevation
+           style={{marginLeft: '3vw', marginRight: '3vw', marginBottom: '20px'}}
+           href={`https://rinkeby.etherscan.io/token/${this.props.contractAddress}`}
+           target="_blank"
+       >
+        View in Etherscan
+        <OpenInNewIcon fontSize="small"/>
+       </Button>
 
       </div>
     )

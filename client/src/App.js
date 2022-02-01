@@ -246,10 +246,10 @@ class App extends Component {
 
         <hr style={{margin: '3vw'}}/>
 
-        <h2>Add KSH to MetaMask</h2>
-        <div>
+        <h2>KSH in MetaMask</h2>
+        <Typography align="center" style={{marginLeft: '3vw', marginRight: '3vw', marginBottom: '20px'}}>
           Follow <a target="_blank" href="https://metamask.zendesk.com/hc/en-us/articles/360015489031-How-to-add-unlisted-tokens-custom-tokens-in-MetaMask">this MetaMask guide</a> to add KSH to MetaMask
-        </div>
+        </Typography>
 
         <div style={{margin: '3vw'}}/>
 

@@ -13,9 +13,8 @@ Blockchain: **Ethereum Rinkeby TestNet**
 
 You can do the following in the faucet dapp.
 1. Mint 10 KSH at a time to your Ethereum address.
-2. Check the current balance of kaushcoins in your Ethereum address.
-3. Check the current total supply of all kaushcoins on the Rinkeby TestNet.
-4. Transfer your kaushcoins from you address to another Ethereum address.
+2. Check the current balance of KSH in your Ethereum address.
+3. Check the current total supply of all KSH in existence on the Rinkeby TestNet.
 
 Note: Effort has been made to communicate the above through the Dapp UI with descriptive text where appropriate.
 
@@ -25,13 +24,14 @@ Link: https://crypto-donater.vercel.app/
 
 ## User Journey
 
-1. Visit the faucet using the link below.
-2. Connect a valid Ethereum address using a wallet such as MetaMask.
-3. Click 'Mint' and approve the transaction in your wallet.
+1. Visit the faucet using the link above.
+2. Connect a valid Ethereum address using a web3 wallet, such as MetaMask.
+3. Click 'Mint 10 KSH' and approve the transaction in your wallet.
 4. Your address will receive 10 KSH.
-5. Click 'Balance' to check your current balance.
-6. Click 'Total Supply' to check the current total supply of kaushcoins.
 
+Smart Contract Address: `0x5d980be513a94D790beF385f4fE250d219ed5b4E`
+
+Etherscan Link: https://rinkeby.etherscan.io/token/0x5d980be513a94D790beF385f4fE250d219ed5b4E
 
 ## Dapp Architecture
 
@@ -45,10 +45,6 @@ Link: https://crypto-donater.vercel.app/
 - UI Components: **Material-UI**
 - Libraries: **OpenZeppelin ERC-20 Contract**
 
-
-## Screencast Link
-
-https://www.loom.com/share/ea8dd8f2c8cf47b4aeaa152f78dd2a0b
 
 ## Directory Structure
 
